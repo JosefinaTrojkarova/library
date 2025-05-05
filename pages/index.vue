@@ -1,18 +1,20 @@
 <template>
   <div>
     <!-- Hero section -->
-    <div class="bg-blue-700 text-white">
-      <div class="container-custom py-16">
-        <div class="max-w-3xl">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4">Vítejte v Městské knihovně Nové vsy u Starého města Lurunského na Moravě</h1>
-          <p class="text-xl mb-8">Objevte svět knih, znalostí a inspirace v naší moderní knihovně.</p>
-          <div class="space-x-4">
-            <NuxtLink to="/about" class="btn bg-white text-blue-700 hover:bg-gray-100">O knihovně</NuxtLink>
-            <NuxtLink to="/books" class="btn border border-white hover:bg-blue-600">Prohlédnout knihy</NuxtLink>
+      <div class="bg-blue-700 text-white">
+        <div class="container-custom py-16 flex">
+          <div >
+            <div class="max-w-3xl flex flex-col justify-center">
+              <h1 class="text-4xl md:text-5xl font-bold mb-4">Vítejte v Městské knihovně Nové vsy u Starého města Lurunského na Moravě</h1>
+              <p class="text-xl mb-8">Objevte svět knih, znalostí a inspirace v naší moderní knihovně.</p>
+              <div class="space-x-4">
+                <NuxtLink to="/about" class="btn bg-white text-blue-700 hover:bg-gray-100 btn-dark">O knihovně</NuxtLink>
+                <NuxtLink to="/books" class="btn border border-white hover:bg-blue-600 btn-dark">Prohlédnout knihy</NuxtLink>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
     <!-- Features section -->
     <div class="container-custom py-12">
@@ -51,10 +53,10 @@
     
     <!-- CTA Section -->
     <div class="container-custom py-12">
-      <div class="bg-blue-600 text-white rounded-lg p-8 text-center">
-        <h2 class="text-3xl font-bold mb-4">Staňte se členem naší knihovny</h2>
-        <p class="text-xl mb-6">Přijďte nás navštívit a získejte přístup k tisícům knih a dalších materiálů.</p>
-        <NuxtLink to="/about" class="btn bg-white text-blue-700 hover:bg-gray-100">Dozvědět se více</NuxtLink>
+      <div class="bg-blue-600 text-white rounded-lg p-8 text-center btn-light">
+        <h2 class="text-3xl font-bold mb-4 cardColor" >Staňte se členem naší knihovny</h2>
+        <p class="text-xl mb-6 cardColor">Přijďte nás navštívit a získejte přístup k tisícům knih a dalších materiálů.</p>
+        <NuxtLink to="/about" class="btn bg-white text-blue-700 hover:bg-gray-100 btn-dark">Dozvědět se více</NuxtLink>
       </div>
     </div>
   </div>
@@ -71,3 +73,37 @@ useHead({
   title: 'Městská knihovna | Domů'
 })
 </script>
+
+<style scoped lang="scss">
+
+@use "~/assets/scss/_variables.scss" as *;
+
+
+  * {
+    background-color: $secondaryColor;
+    color: $primaryColor;
+  }
+
+
+  .btn-dark {
+    background-color: $primaryColor;
+    color: $secondaryColor;
+    border: none;
+  }
+
+  .btn-light {
+    background-color: $cardBgr;
+    color: $primaryColor;
+    border: 0.1rem solid #815729;
+  }
+
+
+  .cardColor {
+    background-color: $cardBgr;
+  }
+
+  .card , .card *{
+    background-color: $cardBgr;
+  }
+</style>
+

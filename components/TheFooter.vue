@@ -42,3 +42,13 @@
 
 <script setup>
 </script>
+
+<style scoped lang="scss">
+ 
+  @use "~/assets/scss/_variables.scss" as *;
+
+  * {
+    background-color: $primaryColor;
+    color: $secondaryColor;
+  }
+</style>

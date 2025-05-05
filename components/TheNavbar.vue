@@ -2,7 +2,11 @@
   <nav class="bg-blue-700 text-white shadow-md">
     <div class="container-custom py-4">
       <div class="flex justify-between items-center">
-        <NuxtLink to="/" class="text-2xl font-bold">Městská knihovna</NuxtLink>
+        <div class="flex items-center space-x-4">
+          <img src="../images/knihyV20.25x.png" class="logo"></img>
+          <NuxtLink to="/" class="text-2xl font-bold">Městská knihovna</NuxtLink>
+        </div>
+        
         
         <div class="hidden md:flex space-x-6">
           <NuxtLink to="/" class="hover:text-blue-200 transition-colors">Domů</NuxtLink>
@@ -43,3 +47,17 @@
 <script setup>
 const isMenuOpen = ref(false)
 </script>
+
+<style scoped lang="scss">
+
+  @use "~/assets/scss/_variables.scss" as *;
+
+  * {
+    background-color: $primaryColor;
+    color: $secondaryColor;
+  }
+
+  .logo {
+    height: 5rem;
+  }
+</style>
