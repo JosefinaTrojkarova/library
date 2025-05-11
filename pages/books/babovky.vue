@@ -7,52 +7,32 @@
         </svg>
         Zpět na seznam knih
       </NuxtLink>
-    </div>
+    </div> 
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Book cover and info -->
       <div class="md:col-span-1">
-        <img src="https://www.databazeknih.cz/img/books/31_/319515/babovky-kPs-319515.jpg" 
+        <img src="https://www.databazeknih.cz/img/books/29_/293567/big_babovky-DdY-293567.png?v=1633258113" 
              alt="Bábovky" 
-             class="w-full rounded-lg shadow-lg mb-4">
-        
-        <div class="bg-white p-4 rounded-lg shadow mb-4">
-          <h2 class="text-xl font-bold mb-2">Detaily</h2>
-          <ul class="space-y-2">
-            <li><span class="font-medium">Autor:</span> Radka Třeštíková</li>
-            <li><span class="font-medium">Vydavatel:</span> Motto</li>
-            <li><span class="font-medium">Rok vydání:</span> 2016</li>
-            <li><span class="font-medium">Počet stran:</span> 264</li>
-            <li><span class="font-medium">ISBN:</span> 978-80-267-0592-2</li>
-            <li><span class="font-medium">Žánr:</span> Česká próza, Romány pro ženy</li>
-          </ul>
-        </div>
-        
-        <div class="bg-white p-4 rounded-lg shadow">
-          <h2 class="text-xl font-bold mb-2">Dostupnost</h2>
-          <p class="text-green-600 mb-2">Na skladě</p>
-          <p class="mb-4">Kniha je k dispozici k zapůjčení v naší knihovně.</p>
-          <button class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">
-            Rezervovat
-          </button>
-        </div>
+             class="w-full rounded-lg shadow-lg">
       </div>
       
       <!-- Book description -->
-      <div class="md:col-span-2">
-        <div class="bg-white p-6 rounded-lg shadow">
-          <h1 class="text-3xl font-bold mb-2">Bábovky</h1>
+      <div class="md:col-span-2 card">
+        <div class="">
           <div class="flex items-center mb-4">
-            <div class="flex text-yellow-500">
-              <span>★</span>
-              <span>★</span>
-              <span>★</span>
-              <span>★</span>
-              <span class="text-gray-300">★</span>
-            </div>
-            <span class="ml-2 text-gray-600">4.2/5</span>
-          </div>
+          <span class="text-3xl font-bold">Bábovky</span>
           
+            <div class="flex text-yellow-500 ml-4">
+              <span class="text-3xl selectedStar">★</span>
+              <span class="text-3xl selectedStar">★</span>
+              <span class="text-3xl selectedStar">★</span>
+              <span class="text-3xl selectedStar">★</span>
+              <span class="text-3xl unSelectedStar">★</span>
+            </div>
+            <span class="text-xl ml-2 text-gray-600 ml-4">4.2/5</span>
+          </div>
+          <h2>Radka Třeštíková</h2>
           <h2 class="text-xl font-bold mb-3">O knize</h2>
           <div class="space-y-4 mb-6">
             <p>
@@ -69,28 +49,39 @@
               odsouzeni. Dvanáct neobyčejných příběhů o obyčejných věcech, které musí v životě řešit každý z nás.
             </p>
           </div>
-          
-          <h2 class="text-xl font-bold mb-3">Ukázka z knihy</h2>
-          <blockquote class="italic border-l-4 border-blue-500 pl-4 py-2 mb-6">
-            "Koláče, bábovky, kynuté buchty. Díky své mámě jsem se v nich našla. Našla jsem v nich útěchu a nakonec i lásku. 
-            Pečení se pro mě stalo vším, není to jenom koníček, je to způsob života. To, co do jídla dáváte, se vám pak vrátí. 
-            Pečení je radost a radost vždycky zvítězí. I když to občas vypadá, že už je všechno prohrané."
-          </blockquote>
-          
-          <div class="flex justify-center">
-            <button class="bg-blue-600 text-white py-2 px-6 rounded hover:bg-blue-700 transition-colors">
-              Přečíst ukázku
-            </button>
-          </div>
         </div>
-        
-        <BookReviews bookId="babovky" />
       </div>
     </div>
+    <BookReviews bookId="babovky" />
   </div>
 </template>
+ 
+<style scoped lang="scss">
+
+@use "~/assets/scss/_variables.scss" as *;
+
+* {
+  background-color: $secondaryColor;
+  color: $primaryColor;
+}
+
+.card, .card * {
+  background-color: $cardBgr;
+} 
+
+.selectedStar {
+  color: $primaryColor;
+}
+.unSelectedStar {
+  color: gray;
+}
+
+</style>
 
 <script setup>
+
+import BookReviews from '~/components/books/BookReviews.vue';
+
 useHead({
   title: 'Bábovky - Radka Třeštíková | Městská knihovna'
 })

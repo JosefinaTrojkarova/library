@@ -4,20 +4,22 @@
     
     <!-- Reviews list -->
     <div v-if="reviews.length > 0" class="mb-8">
-      <div v-for="(review, index) in reviews" :key="index" class="card mb-4">
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <h3 class="text-lg font-bold">{{ review.name }}</h3>
-            <p class="text-sm text-gray-500">{{ formatDate(review.date) }}</p>
-          </div>
-          <div class="flex">
-            <span v-for="i in 5" :key="i" class="text-xl">
-              <span v-if="i <= review.rating" class="text-yellow-500">★</span>
-              <span v-else class="text-gray-300">★</span>
-            </span>
+      <div v-for="(review, index) in reviews" :key="index" class="card mb-8">
+        <div class="reviewHeader">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <span class="text-xl font-bold">{{ review.name }}</span>
+              <p class="text-left">{{ formatDate(review.date) }}</p>
+            </div>
+            <div class="flex ml-4">
+              <span v-for="i in 5" :key="i" class="text-2xl">
+                <span v-if="i <= review.rating" class="text-yellow-500 selectedStar">★</span>
+                <span v-else class="text-gray-300 unSelectedStar">★</span>
+              </span>
+            </div>
           </div>
         </div>
-        <p>{{ review.comment }}</p>
+        <p class="text-left">{{ review.comment }}</p>
       </div>
     </div>
     <div v-else class="card mb-8 text-center py-8">
@@ -34,7 +36,7 @@
             type="text" 
             id="name" 
             v-model="newReview.name"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 inputBorder"
             required
             placeholder="Vaše jméno"
           >
@@ -48,8 +50,8 @@
               :key="star" 
               type="button"
               @click="newReview.rating = star"
-              class="text-2xl focus:outline-none"
-              :class="newReview.rating >= star ? 'text-yellow-500' : 'text-gray-300'"
+              class="text-3xl focus:outline-none"
+              :class="newReview.rating >= star ? 'selectedStar' : 'unSelectedStar'"
             >
               ★
             </button>
@@ -61,7 +63,7 @@
           <textarea 
             id="comment" 
             v-model="newReview.comment"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 inputBorder"
             rows="4"
             required
             placeholder="Napište recenzi..."
@@ -81,6 +83,41 @@
     </div>
   </div>
 </template>
+
+<style scoped lang="scss">
+@use "~/assets/scss/_variables.scss" as *;
+* {
+  background-color: $secondaryColor;
+  color: $primaryColor;
+}
+
+.card, .card * {
+  background-color: $cardBgr
+}
+
+.selectedStar {
+  color: $primaryColor;
+}
+.unSelectedStar {
+  color: gray;
+}
+
+.inputBorder {
+  border-color: rgba($primaryColor, 0.5);
+}
+
+input::placeholder, 
+textarea::placeholder {
+  color: rgba($primaryColor, 0.5); 
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+</style>
 
 <script setup>
 import { ref } from 'vue'
@@ -151,7 +188,7 @@ const formatDate = (dateString) => {
   const date = new Date(dateString)
   return new Intl.DateTimeFormat('cs-CZ', { 
     year: 'numeric', 
-    month: 'long', 
+    month: 'numeric', 
     day: 'numeric' 
   }).format(date)
 }

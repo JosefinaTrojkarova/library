@@ -7,3 +7,12 @@
     <TheFooter />
   </div>
 </template>
+
+<style scoped lang="scss">
+@use "~/assets/scss/_variables.scss" as *;
+
+main {
+  background-color: $secondaryColor;
+  color: $primaryColor;
+}
+</style>
